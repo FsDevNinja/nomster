@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @places = Place.paginate(:page => params[:page], :per_page => 5)
-    end
+  end
 
   def new
     @place = Place.new
@@ -25,19 +25,20 @@ class PlacesController < ApplicationController
 
     if @place.user != current_user
     return render text: 'Not Allowed', status: :forbidden
-  end
+    end
   end
 
   def update
     @place = Place.find(params[:id])
     if @place.user != current_user
     return render text: 'Not Allowed', status: :forbidden
-  end
-    @place.update_attributes(place_params)if @place.valid?
+    end
+    @place.update_attributes(place_params)
+    if @place.valid?
     redirect_to root_path
-  else
+    else
     render :edit, status: :unprocessable_entity
-  end
+    end
   end
 
   def destroy
@@ -48,12 +49,10 @@ class PlacesController < ApplicationController
     @place.destroy
     redirect_to root_path
   end
-private
+  private
 
-def place_params
-  params.require(:place).permit(:name, :description, :address)
-end
-
-
+  def place_params
+    params.require(:place).permit(:name, :description, :address)
+  end
 
 end
