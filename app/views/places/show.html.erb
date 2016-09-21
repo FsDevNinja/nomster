@@ -38,7 +38,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQYATiag_fcvRPO1gyPlPjp-d
   </div>
 </div>
 <div class="clear"></div>
-<%= simple_form_for @comment, url: '#' do |f| %>
+<%= simple_form_for @comment, place_comments_path(@place) do |f| %>
   <%= f.input :message %>
   <%= f.input :rating %>
   <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
