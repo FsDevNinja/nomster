@@ -8,7 +8,7 @@ resources :places do
     resources :comments, only: :create
     resources :photos
   end
-
+resources :users, only: :show
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
