@@ -6,6 +6,7 @@ root 'places#index'
 
 resources :places do
     resources :comments, only: :create
+    resources :photos
   end
 
   # You can have the root of your site routed with "root"
