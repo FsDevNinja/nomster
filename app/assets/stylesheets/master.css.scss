@@ -66,3 +66,10 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+
+.place-images img {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
